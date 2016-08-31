@@ -7,36 +7,21 @@ The second argument, func, is a function you'll use to test the first elements o
 Return the rest of the array, otherwise return an empty array.
 */
 function dropElements(arr, func) {
-  // Drop them elements.
-  //For the return array, take the array as input, start where k left off and go to the end.
-  //Pushing elements onto the new array. 
-  function notDropped(thisArr, first, length){
-     var newArr = [];
-     for(var j = first; j < length; j++){
-        newArr.push(thisArr[j]);
-     }
-     return newArr;
-  }
- //i for iteration
+  //this more succinct solution I learned from Ragase282
+  //What I learned was why func(arr[0]) was 0 when I was putting arr[i] and not getting the correct result, 
+  //Now I understand each time the array is shifted, the integer at position 0 is changed! 
+  //Now I know and knowing is half the battle. 
   var i = 0;
-  //k for counting where to start the new array
-  var k = 0;
-  //empty array for when there is nothing to return 
-  var emp = [];
-  //loop through elements seeking the true element, breaking when found.
+  //loop through elements seeking the true element, breaking when found. Shifting the elements when not found.
   for(i; i < arr.length; i++){
-        if(func(arr[i])){
-            break;
-        }
-        k++;
-
+    if(func(arr[0])){
+        break;
+    }
+    else{
+        arr.shift();
+    }
   }
-  if(k == arr.length){
-    return emp;
-  }
-  
-
-  return notDropped(arr, k, arr.length);
+  return arr;
 }
 
 console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3; })     + " return [3, 4]");
