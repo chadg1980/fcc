@@ -1,0 +1,1 @@
+This repository is to keep track of my progress on free code camp algorith scripting. 
