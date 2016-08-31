@@ -13,7 +13,10 @@ function dropElements(arr, func) {
   //Now I know and knowing is half the battle. 
   var i = 0;
   //loop through elements seeking the true element, breaking when found. Shifting the elements when not found.
-  for(i; i < arr.length; i++){
+  //This code doesn't pass the empty array in free code camp
+  //Changing var end = arr.length and adding end to the for loop in place of arr.length works. I have no idea why
+  var end = arr.length
+  for(i; i < end; i++){
     if(func(arr[0])){
         break;
     }
